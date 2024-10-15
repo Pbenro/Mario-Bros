@@ -1,0 +1,18 @@
+@startuml Diagrama
+
+class Usuario
+class Juego{
+    -Mascota Mascota
+    -Usuario Usuario
+}
+class Mascota{
+    +Pasear()
+}
+class Felicidad
+class Porcentaje{
+    private:
+        int numero;
+        
+}
+
+@enduml
