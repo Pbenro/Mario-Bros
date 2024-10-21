@@ -7,12 +7,23 @@ class Juego{
 }
 class Mascota{
     +Pasear()
+    -Felicidad Felicidad
 }
 class Felicidad
 class Porcentaje{
-    private:
-        int numero;
-        
+    -Numero numero
+    +Incrementar (numero)
+    +Disminuir (numero)
+    +Imprimir ()
 }
+
+Usuario o-- Mascota
+Mascota *-- Felicidad
+Juego *-- Usuario
+Juego *-- Mascota
+Felicidad --|> Porcentaje
+Porcentaje *-- Numero
+Juego *-- Mascota
+Felididad --|> Porcentaje
 
 @enduml
