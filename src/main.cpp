@@ -1,6 +1,8 @@
 #include <iostream>
 #include <list>
-#include <porcentaje.hpp>
+#include <Porcentaje.hpp>
+
+using namespace std;
 
 int main(){
 
