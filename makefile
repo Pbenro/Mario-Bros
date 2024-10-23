@@ -1,8 +1,8 @@
-bin/programa : src/main.cpp
+bin/programa : src/main.cpp include/*
 	g++ src/main.cpp -Iinclude -o bin/programa
 
 ejecutar : bin/programa
-	./bin/programa3
+	./bin/programa
 
 clean : bin/programa
 	rm bin/programa
