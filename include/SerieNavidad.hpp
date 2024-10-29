@@ -25,6 +25,7 @@ class SerieNavidad{
     }
 
     void Imprimir(){
+        system("color 84");
         for (auto &&focoActual : focos)
         {
             std::cout<<focoActual.Imprimir()<<"-";
