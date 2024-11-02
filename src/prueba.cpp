@@ -12,31 +12,42 @@ int main(int argc, char const *argv[])
 {
     std::string reset_position;
     int frame = 0;
-    auto can = Canvas(50,50);
-    can.DrawPointCircle(10,10,10);
-    can.DrawPointLine(0,0,10,10);
-    auto ColorSupport = vbox({
-                            Terminal::ColorSupport() >= Terminal::Color::Palette16
-                                ? text(" 16 color palette support : Yes")
-                                : text(" 16 color palette support : No"),
-                            Terminal::ColorSupport() >= Terminal::Color::Palette256
-                                ? text("256 color palette support : Yes")
-                                : text("256 color palette support : No"),
-                            Terminal::ColorSupport() >= Terminal::Color::TrueColor
-                                ? text("       True color support : Yes")
-                                : text("       True color support : No"),
-                        });
-    while (true)
-    {
+    int g = -5;
+    int h = 0;
+    while (true){
         Screen pantalla = Screen::Create(Dimension::Full(), Dimension::Full());
-        Element personaje = spinner(20, frame);
-        Element lienzo = bgcolor(Color::Yellow3, border(vbox(ColorSupport,personaje,canvas(&can))));
+
+        auto can = Canvas(300,50);
+        can.DrawPointCircle(10, 40, 4);
+        can.DrawPointLine(15, 38, 28, 33);
+        can.DrawPointLine(28, 33, 28, 28);
+        can.DrawPointLine(28, 28, 10, 30);
+        can.DrawPointLine(10, 30, 4, 33);
+        can.DrawPointLine(4, 33, 6, 36);
+        can.DrawPointCircleFilled((30+(1.42*frame)), (29 + (.1*g*frame)-h), 2);
+
+        Element lienzo = bgcolor(Color::Yellow3, canvas(&can));
         Render(pantalla, lienzo);
+
         std::cout << reset_position;
         pantalla.Print();
         reset_position = pantalla.ResetPosition(true);
+
         this_thread::sleep_for(0.1s);
         frame++;
+
+        if (frame==40){
+            h = -1;
+        }
+
+        if (frame>40){
+            h = h -1;
+        }
+
+        if(frame == 175){
+            frame = 0;
+            reset_position = pantalla.ResetPosition(true);
+        }
     }
     return 0;
 }
